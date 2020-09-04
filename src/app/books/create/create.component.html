@@ -1,0 +1,79 @@
+<div class="main">
+ <form class="example-form" [formGroup]="createBookForm" novalidate>
+
+   <mat-form-field class="example-full-width-one" appearance="outline">
+     <mat-label>Book Id</mat-label>
+     <input matInput  formControlName="id"  placeholder="121">
+     <mat-error *ngIf="!createBookForm.controls.id.valid">
+       Book Id is required
+     </mat-error>
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width-one" appearance="outline">
+     <mat-label>Book Name</mat-label>
+     <input matInput  formControlName="name"  placeholder="You can win">
+     <mat-error *ngIf="!createBookForm.controls.name.valid">
+       Book Name is required
+     </mat-error>
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width-one" appearance="outline">
+     <mat-label>Description</mat-label>
+     <input matInput  formControlName="description"  placeholder="inspiring stories">
+     <mat-error *ngIf="!createBookForm.controls.description.valid">
+       Description is required
+     </mat-error>
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width-one" appearance="outline">
+     <mat-label>Page Count</mat-label>
+     <input matInput  formControlName="count"  placeholder="152">
+     <mat-error *ngIf="!createBookForm.controls.count.valid && !createBookForm.controls.count.hasError('required')">
+       Enter valid page count
+     </mat-error>
+     <mat-error *ngIf="createBookForm.controls.count.hasError('required')">
+        Page count is required
+      </mat-error>
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width-one" appearance="outline">
+     <mat-label>Publish Date</mat-label>
+     <input matInput  [matDatepicker]="picker" formControlName="date"  placeholder="dd/mm/yyyy">
+     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+     <mat-datepicker touchUi #picker></mat-datepicker>
+     <mat-error *ngIf="!createBookForm.controls.date.valid && !createBookForm.controls.date.hasError('required')">
+       Enter valid date
+     </mat-error>
+     <mat-error *ngIf="createBookForm.controls.date.hasError('required')">
+        Publish Date is required
+      </mat-error>
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width-one" appearance="outline">
+     <mat-label>Author Name</mat-label>
+     <input type="text"
+           placeholder="Select author"
+           aria-label="Number"
+           matInput
+           formControlName="author"
+           [matAutocomplete]="auto">
+     <mat-autocomplete #auto="matAutocomplete">
+       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+         {{option}}
+       </mat-option>
+     </mat-autocomplete>
+     <mat-error *ngIf="!createBookForm.controls.author.valid && !createBookForm.controls.author.hasError('required')">
+       Invalid Author Name
+     </mat-error>
+     <mat-error *ngIf="createBookForm.controls.author.hasError('required')">
+        Author Name is required
+    </mat-error>
+   </mat-form-field>
+
+
+   </form>
+
+</div>
+<div class="buttons">
+  <button mat-raised-button color="primary" class="btn" [disabled]="!createBookForm.valid" (click)="submit()">Primary</button>
+</div>
