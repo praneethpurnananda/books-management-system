@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,10 +7,10 @@ export class BooksService {
   private booksData = [];
   private authorsData: string[] = ['Shive Khera', 'arper Lee', 'Leo Tolstoy', 'F. Scott Fitzgeralds', 'Gabriel García Márquez', 'E.M. Forster'];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getBooksData(){
-    return this.booksData;
+    return this.http.get('http://127.0.0.1:5000')
   }
 
   getAuthorsData(){
@@ -18,10 +18,10 @@ export class BooksService {
   }
 
   addBooks(tmp){
-    this.booksData.push(tmp)
+    return this.http.post('http://127.0.0.1:5000/add',tmp);
   }
 
   deleteBook(tmp){
-    this.booksData = this.booksData.filter(({id}) => id !== tmp.id);
+    return this.http.post('http://127.0.0.1:5000/delete',tmp);
   }
 }

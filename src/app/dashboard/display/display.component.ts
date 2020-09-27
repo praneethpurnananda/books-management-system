@@ -17,15 +17,23 @@ export class DisplayComponent implements OnInit {
   constructor(private _myservice: BooksService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.booksData = this._myservice.getBooksData();
-    console.log(this.booksData);
-    this.dataSource = new MatTableDataSource(this.booksData);
+    this._myservice.getBooksData()
+    .subscribe(
+      data=>
+      {
+        this.booksData = data,
+        this.dataSource = new MatTableDataSource(this.booksData);
+      }
+    );
+ 
+  
   }
 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.dataSource);
   }
 
   edit(item){
@@ -70,7 +78,7 @@ export class DeleteData {
   flg = 0;
 
   delete(){
-    this._myservice.deleteBook(this.data);
+    this._myservice.deleteBook(this.data).subscribe();
   }
 
 }

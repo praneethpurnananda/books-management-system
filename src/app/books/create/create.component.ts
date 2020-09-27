@@ -44,7 +44,9 @@ export class CreateComponent implements OnInit {
   submit(){
     console.log(this.createBookForm.value);
     let tmp = {id: this.createBookForm.value.id , name: this.createBookForm.value.name, description: this.createBookForm.value.description, author: this.createBookForm.value.author, pagecount: this.createBookForm.value.count, date:this.createBookForm.value.date}
-    this._myservice.addBooks(tmp);
+    this._myservice.addBooks(tmp).subscribe(
+      data=>console.log(data)
+    );
     this.createBookForm.reset();
   }
 
