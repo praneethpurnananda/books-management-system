@@ -1,3 +1,6 @@
+<br>
+<button mat-raised-button color="primary" class="btn" style="float: right;margin-right: 2%;" routerLink="/create">Add Book</button>
+<br>
 <div class="table_main">
   <br><br>
 <mat-form-field appearance="outline">
@@ -10,7 +13,7 @@
   <!-- Position Column -->
   <ng-container matColumnDef="Bookid">
     <th mat-header-cell *matHeaderCellDef> Book id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
   </ng-container>
 
   <!-- Name Column -->

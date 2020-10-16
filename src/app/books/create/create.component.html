@@ -1,13 +1,16 @@
+<br>
+<button mat-raised-button color="primary" class="btn" style="float: right;margin-right: 11%;" routerLink="/">Display Books</button>
 <div class="main">
+
  <form class="example-form" [formGroup]="createBookForm" novalidate>
 
-   <mat-form-field class="example-full-width-one" appearance="outline">
+   <!-- <mat-form-field class="example-full-width-one" appearance="outline">
      <mat-label>Book Id</mat-label>
      <input matInput  formControlName="id"  placeholder="121">
      <mat-error *ngIf="!createBookForm.controls.id.valid">
        Book Id is required
      </mat-error>
-   </mat-form-field>
+   </mat-form-field> -->
 
    <mat-form-field class="example-full-width-one" appearance="outline">
      <mat-label>Book Name</mat-label>
@@ -58,8 +61,8 @@
            formControlName="author"
            [matAutocomplete]="auto">
      <mat-autocomplete #auto="matAutocomplete">
-       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-         {{option}}
+       <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+         {{option.name}}
        </mat-option>
      </mat-autocomplete>
      <mat-error *ngIf="!createBookForm.controls.author.valid && !createBookForm.controls.author.hasError('required')">
@@ -75,5 +78,7 @@
 
 </div>
 <div class="buttons">
-  <button mat-raised-button color="primary" class="btn" [disabled]="!createBookForm.valid" (click)="submit()">Primary</button>
+  <button mat-raised-button color="primary" class="btn" [disabled]="!createBookForm.valid" (click)="submit()">Submit Data</button>
 </div>
+<br><br>
+<h3 *ngIf="errmsg" style="text-align: center;color: #c12122;">{{errmsg}}</h3>

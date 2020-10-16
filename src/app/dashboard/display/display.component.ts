@@ -2,6 +2,7 @@ import { Component, OnInit , ViewChild, Inject } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { BooksService } from "../../books.service";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display',
@@ -14,7 +15,7 @@ export class DisplayComponent implements OnInit {
     dataSource;
 
 
-  constructor(private _myservice: BooksService,public dialog: MatDialog) { }
+  constructor(private _myservice: BooksService,public dialog: MatDialog,private router: Router) { }
 
   ngOnInit(): void {
     this._myservice.getBooksData()
@@ -25,8 +26,8 @@ export class DisplayComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.booksData);
       }
     );
- 
-  
+
+
   }
 
 
@@ -47,7 +48,9 @@ export class DisplayComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
+        if(result){
         this.ngOnInit();
+      }
       });
 
       this.ngOnInit();

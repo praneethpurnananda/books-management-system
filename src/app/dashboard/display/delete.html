@@ -1,6 +1,8 @@
-<h1 mat-dialog-title>Are you sure you want to delete book {{data.name}}</h1>
-
+<h1 mat-dialog-title style="font-size: 18px">Are you sure you want to delete</h1>
+<mat-dialog-content class="mat-typography">
+  Book Name : {{data.name}}
+</mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" class="mat-raised-button mat-primary submit" type="button" (click)="delete()" mat-dialog-close>Delete</button>
   <button mat-flat-button mat-dialog-close>Close</button>
+    <button mat-raised-button color="warn" class="mat-raised-button mat-primary submit" type="button" (click)="delete()" [mat-dialog-close]="true">Delete</button>
 </mat-dialog-actions>
