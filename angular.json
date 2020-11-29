@@ -25,9 +25,22 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/color-switcher-design.css",
+              "src/assets/css/elegent-icon.css",
+              "src/assets/css/flaticon.css",
+              "src/assets/css/fontawesome-all.css",
+              "src/assets/css/jquery.fancybox.min.css",
+              "src/assets/css/owl.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/style.css",
+              "src/assets/css/swiper.css"
             ],
-            "scripts": []
+            "scripts": [
+            
+            ]
           },
           "configurations": {
             "production": {
